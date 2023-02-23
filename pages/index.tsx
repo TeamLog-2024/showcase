@@ -13,6 +13,11 @@ const Index = () => {
     <>
       <ReactFullpage
         scrollingSpeed={800}
+        normalScrollElements=".popup"
+        scrollOverflow={true}
+        credits={{
+          enabled: false,
+        }}
         render={() => {
           return (
             <ReactFullpage.Wrapper>

@@ -1,48 +1,53 @@
 import { RefObject, useRef, useState } from "react";
 import styled from "styled-components";
+import Popup from "./Popup";
 
 const Showcase = () => {
   const [size] = useState(20);
   const [angle, setAngle] = useState(0);
   const [index, setIndex] = useState(0);
+  const [popup, setPopup] = useState(false);
   const cube = useRef<HTMLDivElement>(null);
 
-  const contents = ["SupSup", "LOGCON", "Kktudic", "Art Work"]
+  const contents = ["SupSup", "LOGCON", "Kktudic", "Art Work"];
+  const notions = [
+    "aaac89ed1271437b8cd376db31a38b60",
+    "cef62efe15d4438da87b55f6b9a6e0c3",
+    "8a5ad631597c48cfa9a2963bf692cb68",
+    "836ac0c03c3848ffb012990cf40180ba",
+  ];
+
+  const handlePopup = () => {
+    setPopup(!popup);
+  };
 
   const handleRight = () => {
-    cube.current?.style.setProperty('transition', '0.5s');
-    setAngle(prevAngle => {
-      const newAngle = prevAngle + 90;
-      return newAngle === 360 ? 0 : newAngle;
-    });
-    setTimeout(() => {
-      cube.current?.style.removeProperty('transition');
-      setIndex(prevIndex => (prevIndex === 3 ? 0 : prevIndex + 1));
-    }, 500);
+    setAngle(angle + 90);
+    cube.current?.style.setProperty("transition", "0.5s");
+    setIndex((prevIndex) => (prevIndex === 3 ? 0 : prevIndex + 1));
   };
-
 
   const handleLeft = () => {
-    setAngle(prevAngle => {
-      const newAngle = prevAngle - 90;
-      return newAngle < 0 ? 270 : newAngle;
-    });
-    setIndex(prevIndex => (prevIndex === 0 ? 3 : prevIndex - 1));
+    setAngle(angle - 90);
+    setIndex((prevIndex) => (prevIndex === 0 ? 3 : prevIndex - 1));
   };
-
 
   return (
     <>
       <FullPageWrapper className="section">
         <Wrapper>
-          <LeftButtonWrapper onClick={() => {
-            handleLeft();
-          }}>
+          <LeftButtonWrapper
+            onClick={() => {
+              handleLeft();
+            }}
+          >
             <Button src="/images/left.svg" />
           </LeftButtonWrapper>
-          <RightButtonWrapper onClick={() => {
-            handleRight();
-          }}>
+          <RightButtonWrapper
+            onClick={() => {
+              handleRight();
+            }}
+          >
             <Button src="/images/right.svg" />
           </RightButtonWrapper>
           <CubeWrapper>
@@ -53,14 +58,41 @@ const Showcase = () => {
                 transform: `rotateY(${angle}deg)`,
               }}
             >
-              <Front theme={{ direction, size, angle }} />
-              <Right theme={{ direction, size, angle }} />
-              <Back theme={{ direction, size, angle }} />
-              <Left theme={{ direction, size, angle }} />
+              <Front
+                onClick={() => handlePopup()}
+                theme={{ direction, size, angle }}
+              />
+              <Right
+                onClick={() => handlePopup()}
+                theme={{ direction, size, angle }}
+              />
+              <Back
+                onClick={() => handlePopup()}
+                theme={{ direction, size, angle }}
+              />
+              <Left
+                onClick={() => handlePopup()}
+                theme={{ direction, size, angle }}
+              />
             </Cube>
           </CubeWrapper>
           <Description>{contents[index]}</Description>
+          {popup ? <Popup handle={handlePopup} id={notions[index]} /> : null}
         </Wrapper>
+        <BottomWrapper>
+          <CopyRight>&copy; Teamlog 2023</CopyRight>
+          <LinkWrppaer>
+            <Link href="https://teamlog.kr" target={"_blank"}>
+              Website
+            </Link>
+            <Link href="https://facebook.com/sunrintog" target={"_blank"}>
+              Facebook
+            </Link>
+            <Link href="https://instagram.com/sunrin_teamlog" target={"_blank"}>
+              Instagram
+            </Link>
+          </LinkWrppaer>
+        </BottomWrapper>
       </FullPageWrapper>
     </>
   );
@@ -168,6 +200,7 @@ const Item = styled.div`
   top: 0;
   left: 0;
   background: #2d2d2d;
+  cursor: pointer;
 `;
 
 interface dircetion {
@@ -183,8 +216,6 @@ const Front = styled(Item)`
     props.theme.direction({
       tz: `${props.theme.size / 2}vmax`,
     })}
-
-  background: #964c4c;
 `;
 
 const Right = styled(Item)`
@@ -208,6 +239,51 @@ const Left = styled(Item)`
       tx: `-${props.theme.size / 2}vmax`,
       ry: "90deg",
     })}
+`;
+
+const BottomWrapper = styled.div`
+  position: absolute;
+  bottom: 2%;
+  transform: translateX(-50%);
+  left: 50%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+`;
+
+const CopyRight = styled.p`
+  font-size: 16px;
+  font-weight: 300;
+  color: #919191;
+`;
+
+const LinkWrppaer = styled.div`
+  display: flex;
+  gap: 10px;
+`;
+
+const Link = styled.a`
+  color: #6e7b9e;
+  display: flex;
+  gap: 10px;
+  list-style-type: none;
+  text-decoration: none;
+
+  &::after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 100%;
+    background-color: #a8a8a8;
+  }
+
+  :nth-child(3) {
+    &::after {
+      display: none !important;
+    }
+  }
 `;
 
 export default Showcase;
