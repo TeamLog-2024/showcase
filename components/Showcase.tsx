@@ -154,7 +154,7 @@ const Wrapper = styled.div`
   height: 100vh;
   text-align: center;
   position: relative;
-  gap: 3vmax;
+  gap: 4.5vmax;
 
   @media screen and (max-width: 1024px) {
     gap: 2.5vmax;
