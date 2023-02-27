@@ -9,10 +9,10 @@ const Showcase = () => {
   const [popup, setPopup] = useState(false);
   const cube = useRef<HTMLDivElement>(null);
 
-  const contents = ["SupSup", "LOGCON", "Kktudic", "Art Work"];
+  const contents = ["LOGCON", "SupSup", "Kktudic", "Art Work"];
   const notions = [
-    "aaac89ed1271437b8cd376db31a38b60",
     "cef62efe15d4438da87b55f6b9a6e0c3",
+    "aaac89ed1271437b8cd376db31a38b60",
     "8a5ad631597c48cfa9a2963bf692cb68",
     "836ac0c03c3848ffb012990cf40180ba",
   ];
@@ -22,13 +22,13 @@ const Showcase = () => {
   };
 
   const handleRight = () => {
-    setAngle(angle + 90);
+    setAngle(angle - 90);
     cube.current?.style.setProperty("transition", "0.5s");
     setIndex((prevIndex) => (prevIndex === 3 ? 0 : prevIndex + 1));
   };
 
   const handleLeft = () => {
-    setAngle(angle - 90);
+    setAngle(angle + 90);
     setIndex((prevIndex) => (prevIndex === 0 ? 3 : prevIndex - 1));
   };
 
@@ -61,19 +61,32 @@ const Showcase = () => {
               <Front
                 onClick={() => handlePopup()}
                 theme={{ direction, size, angle }}
-              />
+              >
+                <Thumbnail src="/images/logcon.svg" />
+              </Front>
               <Right
                 onClick={() => handlePopup()}
                 theme={{ direction, size, angle }}
-              />
+              >
+                <Thumbnail src="/images/vscode.png" />
+              </Right>
               <Back
                 onClick={() => handlePopup()}
                 theme={{ direction, size, angle }}
-              />
+              >
+                <Thumbnail src="/images/kkutudic.svg" />
+              </Back>
               <Left
                 onClick={() => handlePopup()}
                 theme={{ direction, size, angle }}
-              />
+              >
+                <Thumbnail
+                  style={{
+                    transform: "rotateY(180deg)",
+                  }}
+                  src="/images/artwork.png"
+                />
+              </Left>
             </Cube>
           </CubeWrapper>
           <Description>{contents[index]}</Description>
@@ -239,6 +252,14 @@ const Left = styled(Item)`
       tx: `-${props.theme.size / 2}vmax`,
       ry: "90deg",
     })}
+`;
+
+const Thumbnail = styled.img`
+  padding: 20%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 `;
 
 const BottomWrapper = styled.div`
