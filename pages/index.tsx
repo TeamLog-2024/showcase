@@ -2,6 +2,7 @@ import Introduce from "@/components/Introduce";
 import Main from "@/components/Main";
 import Showcase from "@/components/Showcase";
 import ReactFullpage from "@fullpage/react-fullpage";
+import Head from "next/head";
 import { useEffect } from "react";
 
 const Index = () => {
@@ -11,6 +12,10 @@ const Index = () => {
 
   return (
     <>
+      <Head>
+        <title>TeamLog</title>
+        <link rel="icon" href="/images/logo.svg" />
+      </Head>
       <ReactFullpage
         scrollingSpeed={800}
         normalScrollElements=".popup"
