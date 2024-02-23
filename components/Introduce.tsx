@@ -24,19 +24,21 @@ const Introduce = () => {
               <ItemImg src="/images/web.svg" />웹
             </Item>
           </ItemWrapper>
-          <SubTitle>2023년 3월, 다음 주인공을 맞이합니다.</SubTitle>
+          <SubTitle>2024년 3월, 다음 주인공을 맞이합니다.</SubTitle>
         </Wrapper>
       </FullPageWrapper>
     </>
   );
 };
 
-const FullPageWrapper = styled.div``;
+const FullPageWrapper = styled.div`
+  background-color: #f9f9f9;
+`;
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 40px;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -47,60 +49,38 @@ const Wrapper = styled.div`
 const TitleWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 10px;
 `;
 
 const Title = styled.h1`
-  font-size: 2vmax;
-  font-weight: 400;
-  color: #c0c0c0;
-
-  @media screen and (max-width: 1440px) {
-    font-size: 2.5vmax;
-  }
-
-  @media screen and (max-width: 1024px) {
-    font-size: 3vmax;
-  }
-
-  @media screen and (max-width: 768px) {
-    font-size: 3.5vmax;
-  }
+  font-size: 3.5vmax;
+  font-weight: 500;
+  color: #333;
 `;
 
 const TitleStrong = styled.span`
   font-weight: 700;
-  color: #f0f0f0;
+  color: #ff5722;
 `;
 
 const SubTitle = styled.h2`
-  font-size: 0.9vmax;
+  font-size: 1.2vmax;
   font-weight: 400;
-  color: #c0c0c0;
-
-  @media screen and (max-width: 1440px) {
-    font-size: 1vmax;
-  }
-
-  @media screen and (max-width: 1024px) {
-    font-size: 1.1vmax;
-  }
-
-  @media screen and (max-width: 768px) {
-    font-size: 1.2vmax;
-  }
+  color: #555;
 `;
 
 const ItemWrapper = styled.div`
   display: flex;
-  gap: 10px;
+  gap: 20px;
   align-items: center;
 `;
 
 const Item = styled.div`
-  background-color: #2d2d2d;
+  background-color: #fff;
   width: 200px;
   height: 200px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 
   display: flex;
   flex-direction: column;
@@ -108,34 +88,20 @@ const Item = styled.div`
   align-items: center;
   justify-content: center;
 
-  font-size: 1vmax;
-  font-weight: 700;
-  color: #bcbcbc;
+  font-size: 1.2vmax;
+  font-weight: 600;
+  color: #555;
 
-  @media screen and (max-width: 1440px) {
-    width: 180px;
-    height: 180px;
-  }
+  transition: transform 0.3s ease-in-out;
 
-  @media screen and (max-width: 1024px) {
-    width: 160px;
-    height: 160px;
-  }
-
-  @media screen and (max-width: 768px) {
-    width: 140px;
-    height: 140px;
-  }
-
-  @media screen and (max-width: 480px) {
-    width: 100px;
-    height: 100px;
+  &:hover {
+    transform: scale(1.05);
   }
 `;
 
 const ItemImg = styled.img`
-  width: 35%;
-  height: 35%;
+  width: 60px;
+  height: 60px;
 `;
 
 export default Introduce;

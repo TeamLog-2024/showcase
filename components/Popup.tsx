@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { NotionRenderer } from "react-notion-x";
 import styled from "styled-components";
+import { Code } from "react-notion-x/build/third-party/code";
 
 const Popup = (props: { handle: () => void; id: string }) => {
   const [record, setRecord] = useState<any>(null);
@@ -18,7 +19,7 @@ const Popup = (props: { handle: () => void; id: string }) => {
       <Background onClick={() => props.handle()}></Background>
       <Wrapper className="popup">
         <Inner>
-          {record ? <NotionRenderer recordMap={record} /> : null}
+          {record ? <NotionRenderer recordMap={record} components={{Code}}/> : null}
           <Close onClick={() => props.handle()} src="/images/close.svg" />
         </Inner>
       </Wrapper>
@@ -54,6 +55,7 @@ const Close = styled.img`
 const Inner = styled.div`
   width: 100%;
   height: 100%;
+  padding: 5%;
   background-color: #fff;
   border-radius: 10px;
   overflow-y: auto;

@@ -1,265 +1,145 @@
-import { RefObject, useRef, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import Popup from "./Popup";
 
 const Showcase = () => {
-  const [size] = useState(20);
-  const [angle, setAngle] = useState(0);
   const [index, setIndex] = useState(0);
   const [popup, setPopup] = useState(false);
-  const cube = useRef<HTMLDivElement>(null);
 
-  const contents = ["LOGCON", "SupSup", "Kktudic", "Art Work"];
+  const contents = ["LOGCON", "SolarSystem", "GetTheTeamLog", "WireTypo", "WLC-GUI", 
+                    "BeamDBG", "Kkutu_Dictionary", "2048", "TodoList"];
   const notions = [
-    "cef62efe15d4438da87b55f6b9a6e0c3",
-    "aaac89ed1271437b8cd376db31a38b60",
-    "8a5ad631597c48cfa9a2963bf692cb68",
-    "836ac0c03c3848ffb012990cf40180ba",
+    "38a3729245ca4834a3c5ce2303d8f690?pvs=4", //로그콘
+    "329ed17c837546dc81dd0d5696a98607?pvs=4", //태양계
+    "b32ac7fe58454e7cb49f8369f87f3715?pvs=4", //클릭게임
+    "typo-e21c192e2861434898cf99917d4f219f?pvs=4", //typo
+    "WLC-GUI-fcb859aa64334096b825cb6c32516343?pvs=4", //wlc
+    "beamdbg-4646da54de2146529569d199a5f4a9c3?pvs=4", //beamdbg
+    "Kkutu_Dictionary-fa4e3889b4fe4cf69012c0ad334bb7c0?pvs=4", //kkutu
+    "2048-50ddba3ef6244ddfafa0550f00e6f8b3?pvs=4", //2048
+    "f130b4427f2644bc9dad9dabb3e71405?pvs=4" //todo
   ];
 
   const handlePopup = () => {
     setPopup(!popup);
   };
 
-  const handleRight = () => {
-    setAngle(angle - 90);
-    cube.current?.style.setProperty("transition", "0.5s");
-    setIndex((prevIndex) => (prevIndex === 3 ? 0 : prevIndex + 1));
+  const handleNext = () => {
+    setIndex((prevIndex) => (prevIndex === contents.length - 1 ? 0 : prevIndex + 1));
   };
 
-  const handleLeft = () => {
-    setAngle(angle + 90);
-    setIndex((prevIndex) => (prevIndex === 0 ? 3 : prevIndex - 1));
+  const handlePrevious = () => {
+    setIndex((prevIndex) => (prevIndex === 0 ? contents.length - 1 : prevIndex - 1));
   };
 
   return (
     <>
       <FullPageWrapper className="section">
         <Wrapper>
-          <LeftButtonWrapper
-            onClick={() => {
-              handleLeft();
-            }}
-          >
+          <LeftButtonWrapper onClick={handlePrevious}>
             <Button src="/images/left.svg" />
           </LeftButtonWrapper>
-          <RightButtonWrapper
-            onClick={() => {
-              handleRight();
-            }}
-          >
+          <RightButtonWrapper onClick={handleNext}>
             <Button src="/images/right.svg" />
           </RightButtonWrapper>
-          <CubeWrapper>
-            <Cube
-              ref={cube as RefObject<HTMLDivElement>}
-              theme={{ direction, size, angle }}
-              style={{
-                transform: `rotateY(${angle}deg)`,
-              }}
-            >
-              <Front
-                onClick={() => handlePopup()}
-                theme={{ direction, size, angle }}
-              >
-                <Thumbnail src="/images/logcon.svg" />
-              </Front>
-              <Right
-                onClick={() => handlePopup()}
-                theme={{ direction, size, angle }}
-              >
-                <Thumbnail src="/images/vscode.png" />
-              </Right>
-              <Back
-                onClick={() => handlePopup()}
-                theme={{ direction, size, angle }}
-              >
-                <Thumbnail src="/images/kkutudic.svg" />
-              </Back>
-              <Left
-                onClick={() => handlePopup()}
-                theme={{ direction, size, angle }}
-              >
-                <Thumbnail
-                  style={{
-                    transform: "rotateY(180deg)",
-                  }}
-                  src="/images/artwork.png"
-                />
-              </Left>
-            </Cube>
-          </CubeWrapper>
-          <Description>{contents[index]}</Description>
+          <ContentWrapper>
+            <Content onClick={handlePopup} title={contents[index]}>
+              <Thumbnail src={`/images/${contents[index].toLowerCase()}.png`} />
+              <Description>{contents[index]}</Description>
+            </Content>
+          </ContentWrapper>
           {popup ? <Popup handle={handlePopup} id={notions[index]} /> : null}
         </Wrapper>
         <BottomWrapper>
-          <CopyRight>&copy; Teamlog 2023</CopyRight>
-          <LinkWrppaer>
-            <Link href="https://teamlog.kr" target={"_blank"}>
+          <CopyRight>&copy; Teamlog 2024</CopyRight>
+          <LinkWrapper>
+            <Link href="https://teamlog.kr" target="_blank">
               Website
             </Link>
-            <Link href="https://facebook.com/sunrintog" target={"_blank"}>
+            <Link href="https://facebook.com/sunrintog" target="_blank">
               Facebook
             </Link>
-            <Link href="https://instagram.com/sunrin_teamlog" target={"_blank"}>
+            <Link href="https://instagram.com/sunrin_teamlog" target="_blank">
               Instagram
             </Link>
-          </LinkWrppaer>
+          </LinkWrapper>
         </BottomWrapper>
       </FullPageWrapper>
     </>
   );
 };
 
-const ButtonWrapper = styled.div`
-  position: absolute;
-  transform: translateY(-50%);
-  top: 50%;
-
-  z-index: 1;
-  width: 3vmax;
-  height: 3vmax;
-
-  @media screen and (max-width: 1024px) {
-    width: 4vmax;
-    height: 4vmax;
-  }
-
-  @media screen and (max-width: 768px) {
-    width: 5vmax;
-    height: 5vmax;
-  }
-`;
-
-const LeftButtonWrapper = styled(ButtonWrapper)`
-  left: 5%;
-`;
-
-const RightButtonWrapper = styled(ButtonWrapper)`
-  right: 5%;
-`;
-
-const Button = styled.img`
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-`;
-
-const direction = ({
-  tx = "0px",
-  ty = "0px",
-  tz = "0px",
-  rx = "0deg",
-  ry = "0deg",
-}: dircetion) => `
-    transform: translateX(${tx}) translateY(${ty}) translateZ(${tz}) rotateX(${rx}) rotateY(${ry});
-`;
-
 const FullPageWrapper = styled.div`
   position: relative;
+  background-color: #f9f9f9;
 `;
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   height: 100vh;
   text-align: center;
-  position: relative;
-  gap: 4.5vmax;
-
-  @media screen and (max-width: 1024px) {
-    gap: 2.5vmax;
-  }
 `;
 
-const Description = styled.p`
-  font-size: 2vmax;
-  font-weight: 700;
-  color: #fff;
-
-  @media screen and (max-width: 1024px) {
-    font-size: 2.5vmax;
-  }
-
-  @media screen and (max-width: 768px) {
-    font-size: 3vmax;
-  }
-`;
-
-const CubeWrapper = styled.div`
-  position: relative;
-  perspective: 1000px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
-
-const Cube = styled.div`
-  transform-style: preserve-3d;
-  width: ${(props) => props.theme.size}vmax;
-  height: ${(props) => props.theme.size}vmax;
-  margin: auto;
-  transition: transform 0.5s;
-`;
-
-const Item = styled.div`
-  width: 100%;
-  height: 100%;
+const LeftButtonWrapper = styled.div`
   position: absolute;
-  top: 0;
-  left: 0;
-  background: #2d2d2d;
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+  z-index: 1;
+`;
+
+const RightButtonWrapper = styled.div`
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+  z-index: 1;
+`;
+
+const Button = styled.img`
+  width: 3vmax;
+  height: 3vmax;
   cursor: pointer;
 `;
 
-interface dircetion {
-  tx?: string;
-  ty?: string;
-  tz?: string;
-  rx?: string;
-  ry?: string;
-}
-
-const Front = styled(Item)`
-  ${(props) =>
-    props.theme.direction({
-      tz: `${props.theme.size / 2}vmax`,
-    })}
+const ContentWrapper = styled.div`
+  display: flex;
+  justify-content: space-around;
+  &:hover {
+    opacity: 0.8;
+    transform: scale(0.95);
+    transition: all 0.3s ease-in-out;
+  }
 `;
 
-const Right = styled(Item)`
-  ${(props) =>
-    props.theme.direction({
-      tx: `${props.theme.size / 2}vmax`,
-      ry: "90deg",
-    })}
-`;
+const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: all ease-in-out 0.3s;
 
-const Back = styled(Item)`
-  ${(props) =>
-    props.theme.direction({
-      tz: `-${props.theme.size / 2}vmax`,
-    })}
-`;
-
-const Left = styled(Item)`
-  ${(props) =>
-    props.theme.direction({
-      tx: `-${props.theme.size / 2}vmax`,
-      ry: "90deg",
-    })}
+  ${props => props.title === "WireTypo" && `
+    & > img {
+      width: 500px;
+    }
+  `}
 `;
 
 const Thumbnail = styled.img`
-  padding: 20%;
-  width: 100%;
-  height: 100%;
+  width: 300px;
+  height: 300px;
   object-fit: cover;
-  object-position: center;
+`;
+
+const Description = styled.p`
+  font-size: 2rem;
+  font-weight: 700;
+  color: #000;
+  margin-top: 10%;
 `;
 
 const BottomWrapper = styled.div`
@@ -267,7 +147,6 @@ const BottomWrapper = styled.div`
   bottom: 2%;
   transform: translateX(-50%);
   left: 50%;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -280,31 +159,14 @@ const CopyRight = styled.p`
   color: #919191;
 `;
 
-const LinkWrppaer = styled.div`
+const LinkWrapper = styled.div`
   display: flex;
   gap: 10px;
 `;
 
 const Link = styled.a`
   color: #6e7b9e;
-  display: flex;
-  gap: 10px;
-  list-style-type: none;
   text-decoration: none;
-
-  &::after {
-    content: "";
-    display: block;
-    width: 1px;
-    height: 100%;
-    background-color: #a8a8a8;
-  }
-
-  :nth-child(3) {
-    &::after {
-      display: none !important;
-    }
-  }
 `;
 
 export default Showcase;

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next output",
     "start": "next start",
     "lint": "next lint"
   },
@@ -17,12 +17,12 @@
     "babel-plugin-styled-components": "^2.0.7",
     "eslint": "8.34.0",
     "eslint-config-next": "13.1.6",
-    "next": "13.1.6",
+    "next": "^14.1.0",
     "notion-client": "^6.16.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-notion-x": "^6.16.0",
-    "styled-components": "^5.3.6",
+    "styled-components": "^6.1.3",
     "typescript": "4.9.5"
   },
   "devDependencies": {
