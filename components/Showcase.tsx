@@ -127,6 +127,16 @@ const Content = styled.div`
       width: 500px;
     }
   `}
+
+  @media screen and (max-width: 500px) {
+    & > img {
+      width: 150px;
+      height: 150px;
+    }
+    & > p {
+      font-weight: 500;
+    }
+  }
 `;
 
 const Thumbnail = styled.img`

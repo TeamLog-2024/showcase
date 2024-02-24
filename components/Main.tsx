@@ -29,6 +29,9 @@ const Wrapper = styled.div`
     url("/images/background.png");
   background-size: cover;
   background-position: center;
+  @media screen and (max-width: 500px){
+    background-image: url();
+  }
 `;
 
 const animation = keyframes`

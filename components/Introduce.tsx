@@ -97,11 +97,26 @@ const Item = styled.div`
   &:hover {
     transform: scale(1.05);
   }
+
+  @media (max-width: 768px) {
+    width: 150px;
+    height: 150px;
+    font-size: 1vmax;
+  }
+  @media screen and (max-width: 500px) {
+    width: 100px;
+    height: 100px;
+    font-size: 1.1vmax;
+  }
 `;
 
 const ItemImg = styled.img`
   width: 60px;
   height: 60px;
+  @media screen and (max-width:500px) {
+    width: 40px;
+    height: 40px;
+  }
 `;
 
 export default Introduce;
