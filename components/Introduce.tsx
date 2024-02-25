@@ -9,7 +9,7 @@ const Introduce = () => {
             <Title>
               What is <TitleStrong>TEAMLOG</TitleStrong>?
             </Title>
-            <SubTitle>팀로그란 2013년에 창설되어,</SubTitle>
+            <SubTitle>팀로그란 2013년에 창설된 동아리로,</SubTitle>
           </TitleWrapper>
           <ItemWrapper>
             <Item>

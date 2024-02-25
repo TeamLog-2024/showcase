@@ -7,17 +7,18 @@ const Showcase = () => {
   const [popup, setPopup] = useState(false);
 
   const contents = ["LOGCON", "SolarSystem", "GetTheTeamLog", "WireTypo", "WLC-GUI", 
-                    "BeamDBG", "Kkutu_Dictionary", "2048", "TodoList"];
+                    "BeamDBG", "Kkutu_Dictionary", "2048", "TodoList", "Tinyhttppd"];
   const notions = [
-    "38a3729245ca4834a3c5ce2303d8f690?pvs=4", //로그콘
-    "329ed17c837546dc81dd0d5696a98607?pvs=4", //태양계
-    "b32ac7fe58454e7cb49f8369f87f3715?pvs=4", //클릭게임
-    "typo-e21c192e2861434898cf99917d4f219f?pvs=4", //typo
-    "WLC-GUI-fcb859aa64334096b825cb6c32516343?pvs=4", //wlc
-    "beamdbg-4646da54de2146529569d199a5f4a9c3?pvs=4", //beamdbg
-    "Kkutu_Dictionary-fa4e3889b4fe4cf69012c0ad334bb7c0?pvs=4", //kkutu
-    "2048-50ddba3ef6244ddfafa0550f00e6f8b3?pvs=4", //2048
-    "f130b4427f2644bc9dad9dabb3e71405?pvs=4" //todo
+    "2024-LOGCON-43a57175b92a42bea4761eb2630937de?pvs=4", //로그콘
+    "85743dd0e25c4547bc262aa9d9d1c5c2?pvs=4", //태양계
+    "Get-the-TeamLog-00bc24cc2d1b4ea9997ab00b4b3c462f?pvs=4", //클릭게임
+    "typo-8217b8dca7db4b9a9fe0e075cf378f1f?pvs=4", //typo
+    "WLC-GUI-1217dfea474f4101b3f67c78e77438fd?pvs=4", //wlc
+    "beamdbg-41fd4a1aad1a48c4a7b8a0260d47e1ce?pvs=4", //beamdbg
+    "Kkutu_Dictionary-c292c4ddca04432abd12dde0084b035b?pvs=4", //kkutu
+    "/2048-b362353676134ac5af76b84873c4e6b0?pvs=4", //2048
+    "cfb7f12e7cd44812bd05deb8d643292b?pvs=4", //todo
+    "Tinyhttppd-176706a191d64bb2b578f0428c7c21b0?pvs=4" //tiny
   ];
 
   const handlePopup = () => {

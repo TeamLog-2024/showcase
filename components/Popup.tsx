@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { NotionRenderer } from "react-notion-x";
 import styled from "styled-components";
 import { Code } from "react-notion-x/build/third-party/code";
+import { Pdf } from "react-notion-x/build/third-party/pdf";
 
 const Popup = (props: { handle: () => void; id: string }) => {
   const [record, setRecord] = useState<any>(null);
