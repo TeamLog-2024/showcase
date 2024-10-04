@@ -6,19 +6,19 @@ const Showcase = () => {
   const [index, setIndex] = useState(0);
   const [popup, setPopup] = useState(false);
 
-  const contents = ["LOGCON", "SolarSystem", "GetTheTeamLog", "WireTypo", "WLC-GUI", 
-                    "BeamDBG", "Kkutu_Dictionary", "2048", "TodoList", "Tinyhttppd"];
+  const contents = ["Sword", "LOGCON", "SolarSystem", "GetTheTeamLog", "2048"];
   const notions = [
+    "Sword-115fa456a3b48054b9bded6215390970?pvs=4", //sword
     "logcon-ecbcbb16541747148f52d1d99e7487db?pvs=4", //로그콘
     "solarsystem-3965cd98dbb5446db65ef41b48ca74ed?pvs=4", //태양계
     "clickgame-573369eff0b94399a488343a0306a70a?pvs=4", //클릭게임
-    "typo-ca56c6e8a6f949ddbe930cb685b359e0?pvs=4", //typo
-    "wlcgui-7447a8cfe9f24adbba955c1dda6d0dde?pvs=4", //wlc
-    "beam-607d204440e9478db13f7314a3d27c91?pvs=4", //beamdbg
-    "kkutu-0d1e65a52854494dbd3221fd4c580157?pvs=4", //kkutu
+    // "typo-ca56c6e8a6f949ddbe930cb685b359e0?pvs=4", //typo
+    // "wlcgui-7447a8cfe9f24adbba955c1dda6d0dde?pvs=4", //wlc
+    // "beam-607d204440e9478db13f7314a3d27c91?pvs=4", //beamdbg
+    // "kkutu-0d1e65a52854494dbd3221fd4c580157?pvs=4", //kkutu
     "2048-40407056315843dfa39d50abc93d023e?pvs=4", //2048
-    "todo-feb102df37c84b23b2434233100c664b?pvs=4", //todo
-    "httppd-14bae3ebb7fc42808b0c3dc3eb954076?pvs=4" //tiny
+    // "todo-feb102df37c84b23b2434233100c664b?pvs=4", //todo
+    // "httppd-14bae3ebb7fc42808b0c3dc3eb954076?pvs=4", //tiny
   ];
 
   const handlePopup = () => {

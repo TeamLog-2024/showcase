@@ -24,7 +24,7 @@ const Introduce = () => {
               <ItemImg src="/images/web.svg" />웹
             </Item>
           </ItemWrapper>
-          <SubTitle>2024년 3월, 다음 주인공을 맞이합니다.</SubTitle>
+          <SubTitle>2025년 3월, 다음 주인공을 맞이합니다.</SubTitle>
         </Wrapper>
       </FullPageWrapper>
     </>
