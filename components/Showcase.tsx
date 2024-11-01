@@ -6,8 +6,9 @@ const Showcase = () => {
   const [index, setIndex] = useState(0);
   const [popup, setPopup] = useState(false);
 
-  const contents = ["Sword", "LOGCON", "SolarSystem", "GetTheTeamLog", "2048"];
+  const contents = ["CatchRedPanda", "Sword", "LOGCON", "SolarSystem", "GetTheTeamLog"];
   const notions = [
+    "5df8a7021602459f8a955c7f12336533", //레서판다
     "Sword-115fa456a3b48054b9bded6215390970?pvs=4", //sword
     "logcon-ecbcbb16541747148f52d1d99e7487db?pvs=4", //로그콘
     "solarsystem-3965cd98dbb5446db65ef41b48ca74ed?pvs=4", //태양계
@@ -16,7 +17,7 @@ const Showcase = () => {
     // "wlcgui-7447a8cfe9f24adbba955c1dda6d0dde?pvs=4", //wlc
     // "beam-607d204440e9478db13f7314a3d27c91?pvs=4", //beamdbg
     // "kkutu-0d1e65a52854494dbd3221fd4c580157?pvs=4", //kkutu
-    "2048-40407056315843dfa39d50abc93d023e?pvs=4", //2048
+    //"2048-40407056315843dfa39d50abc93d023e?pvs=4", //2048
     // "todo-feb102df37c84b23b2434233100c664b?pvs=4", //todo
     // "httppd-14bae3ebb7fc42808b0c3dc3eb954076?pvs=4", //tiny
   ];
